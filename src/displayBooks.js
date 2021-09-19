@@ -5,7 +5,10 @@ const sectionCenter = get(".section-center");
 const displayBooks = async function (url) {
       if (sectionCenter) {
     sectionCenter.classList.add("hide");
-    const data = await setBookDetails(url);
+        const data = await setBookDetails(url);
+        if (!data) {
+          sectionCenter.innerHTML= 'Sorry no book matched your search'
+        }
     const display = data
       .map((item) => {
         return ` <div class="book-info">
